@@ -54,6 +54,7 @@ blogRouter.post('/', async (c) => {
         const blog = await prisma.post.create({
             data: {
                 title: body.title,
+                description: body.description,
                 content: body.content,
                 authorId: c.get("userID"),
             }
@@ -169,6 +170,11 @@ blogRouter.get('/all', async (c) => {
             datasourceUrl: c.env?.DATABASE_URL,
         }).$extends(withAccelerate());
 
+        const limit = Number(c.req.query("limit")) || 10;
+        const offset = Number(c.req.query("offset")) || 0;
+
+        const totalBlogs = await prisma.post.count();
+
         const blogs = await prisma.post.findMany({
             include: {
                 author: {
@@ -176,10 +182,15 @@ blogRouter.get('/all', async (c) => {
                         name: true
                     }
                 }
+            },
+            skip: offset,
+            take: limit,
+            orderBy: {
+                publishedAt: 'desc'
             }
         });
 
-        return c.json({ blogs });
+        return c.json({blogs, totalBlogs});
     } catch (e) {
         return c.json({ error: "Error while fetching blogs" }, 500); //Internal Server Error
     }

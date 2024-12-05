@@ -24,7 +24,7 @@ userRouter.post('/signup', async (c) => {
     const { success } = signUpBody.safeParse(body);
 
     if(!success) {
-        return c.json({ error: "Invalid Request" }, 400); //Bad Request
+        return c.json({ error: "Please enter valid input" }, 400); //Bad Request
     }
 
     const hashedPassword: any = await sha256(body.password);
@@ -42,8 +42,13 @@ userRouter.post('/signup', async (c) => {
 
         return c.json({ jwt });
 
-    } catch (e) {
-        return c.json({ error: "Error while Signing Up" }, 500);
+    } catch (e : any) {
+
+        if (e.code === 'P2002' && e.meta?.target?.includes('email')) {
+            return c.json({ error: "User already exists" }, 409);
+        }
+
+        return c.json({ error: "Error while Signing Up"}, 500);
     }
 });
 
@@ -62,7 +67,7 @@ userRouter.post('/signin', async (c) => {
         const { success } = signInBody.safeParse(body);
 
         if(!success) {
-            return c.json({ error: "Invalid Request" }, 400); //Bad Request
+            return c.json({ error: "Please enter valid input" }, 400); //Bad Request
         }
 
         const user = await prisma.user.findUnique({
