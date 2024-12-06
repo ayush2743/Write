@@ -1,5 +1,4 @@
 import { EditIcon, Trash2Icon } from 'lucide-react';
-import { useRefreshBlogAtom } from '../../atoms/myBlogAtom';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
@@ -8,10 +7,11 @@ interface MyContentProps {
     index: number;
     blogs: any;
     edit: boolean;
+    onDelete: () => void;
 }
 
 
-export default function Content({ index, blogs, edit}: MyContentProps) {
+export default function Content({ index, blogs, edit, onDelete}: MyContentProps) {
     const gradients = [
         "from-blue-200 to-purple-300",
         "from-green-200 to-teal-300",
@@ -46,8 +46,7 @@ export default function Content({ index, blogs, edit}: MyContentProps) {
                     id: blogs.id
                 }
             });
-            const refresh = useRefreshBlogAtom();
-            refresh(1)
+            onDelete();
         } catch (error : any) {
             console.log(error.response.data.error);
             if (error.message === 'No authentication token found') {

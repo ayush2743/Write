@@ -5,7 +5,9 @@ const blogAtomFamily = atomFamily({
     key: 'blogAtomFamily',
     default: selectorFamily({
         key: 'blogSelectorFamily',
-        get: function (page: number) {
+        get: function ({page, isUser} : {page: number, isUser: boolean}) {
+
+            const BACKEND_URL = "http://127.0.0.1:8787/api/v1"
 
             return async () => {
                 try {
@@ -13,7 +15,8 @@ const blogAtomFamily = atomFamily({
                     if (!token) {
                         throw new Error('No authentication token found');
                     }
-                    const res = await axios.get(`http://127.0.0.1:8787/api/v1/blog/all?limit=4&offset=${(page - 1) * 4}`, {
+                    const url = isUser ? `${BACKEND_URL}/blog/user-blogs?limit=4&offset=${(page - 1) * 4}` : `${BACKEND_URL}/blog/all?limit=4&offset=${(page - 1) * 4}`;
+                    const res = await axios.get(`${url}`, {
                         headers: {
                             Authorization: `${token}`
                         }

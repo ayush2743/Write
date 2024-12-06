@@ -147,13 +147,34 @@ blogRouter.get('/user-blogs', async (c) => {
             return c.json({ error: "userID not found in context" }, 400); // Bad Request
         }
 
-        const blogs = await prisma.post.findMany({
+        const limit = Number(c.req.query("limit")) || 10;
+        const offset = Number(c.req.query("offset")) || 0;
+
+        const totalBlogs = await prisma.post.count({
             where: {
                 authorId: userId
             }
         });
 
-        return c.json({ blogs });
+        const blogs = await prisma.post.findMany({
+            where: {
+                authorId: userId
+            },
+            include: {
+                author: {
+                    select: {
+                        name: true
+                    }
+                }
+            },
+            skip: offset,
+            take: limit,
+            orderBy: {
+                publishedAt: 'desc'
+            }
+        });
+
+        return c.json({blogs, totalBlogs});
     } catch (e) {
         return c.json({ error: "Error while fetching blogs" }, 500); //Internal Server Error
     }

@@ -1,6 +1,6 @@
 import { blogAtomFamily } from '../../atoms/blogAtom';
 import { useRecoilValueLoadable } from 'recoil';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Content from './Content';
 import Skeleton from './Skeleton';
 import { useNavigate } from 'react-router-dom';
@@ -9,15 +9,17 @@ import PageNumber from './PageNumber';
 
 export default function BlogPagination({edit}: {edit: boolean}) {
     const [page, setPage] = useState<number>(1);
+
     const totalBlogs = useRef<number>(3);
     const navigate = useNavigate();
 
-    const blogsLoadable = useRecoilValueLoadable(blogAtomFamily(page));
+    const blogsLoadable = useRecoilValueLoadable(blogAtomFamily({page, isUser: edit}));
+
 
     if (blogsLoadable.state === 'loading') {
         return (
             <>
-                <Skeleton />
+                <Skeleton edit={edit}/>
                 <PageNumber totalBlogs={totalBlogs.current} setPage={setPage} page={page} />
             </>
         )
@@ -44,16 +46,21 @@ export default function BlogPagination({edit}: {edit: boolean}) {
         );
     }
 
-    const blogsData = blogsLoadable.contents;
+    function handleDeleteBlog() {
+        window.location.reload();
+    }
 
-    const blogs = blogsData.blogs;
-    totalBlogs.current = blogsData.totalBlogs;
+    const blogs = blogsLoadable.contents.blogs;
+    totalBlogs.current = blogsLoadable.contents.totalBlogs;
+
+
+
 
     return (
         <div className="flex flex-col">
             <div className="grid max-w-5xl grid-cols-2 gap-x-14 gap-y-16 mx-auto">
                 {blogs.map((blog: any, index: number) => (
-                    <Content key={blog.id} index={index} blogs={blog} edit={edit}/>
+                    <Content key={blog.id} index={index} blogs={blog} edit={edit} onDelete={() => handleDeleteBlog()}/>
                 ))}
             </div>
         
