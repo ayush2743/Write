@@ -121,7 +121,6 @@ blogRouter.delete('/', async (c) => {
         const blog = await prisma.post.delete({
             where: {
                 id: body.id,
-                authorId: c.get("userID")
             }
         })
 
