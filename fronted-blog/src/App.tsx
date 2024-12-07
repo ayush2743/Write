@@ -4,6 +4,7 @@ import Signin from './pages/Signin'
 import Blog from './pages/Blog'
 import { RecoilRoot } from 'recoil'
 import MySelf from './pages/MySelf'
+import ProtectedRoute from './components/Blogs/ProtectedRoute'
 
 function App() {
 
@@ -14,8 +15,8 @@ function App() {
                     <Routes>
                         <Route path="/signup" element={<Signup />} />
                         <Route path="/signin" element={<Signin />} />
-                        <Route path="/blogs" element={<Blog />} />
-                        <Route path="/myself" element={<MySelf />} />
+                        <Route path="/blogs" element={<ProtectedRoute><Blog /></ProtectedRoute>} />
+                        <Route path="/myself" element={<ProtectedRoute><MySelf /></ProtectedRoute> } />
                     </Routes>
                 </BrowserRouter>
             </RecoilRoot>

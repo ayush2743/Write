@@ -10,10 +10,6 @@ import BlogPagination from "../components/Blogs/BlogPagination"
 
 export default function MySelf() {
 
-    if (localStorage.getItem('jwt') === null) {
-        return <Navigate to="/signin" />
-    }
-
     return (
         <div className="flex flex-col  bg-loginPage bg-contain bg-no-repeat bg-black overflow-y-hidden">
             <Bubbles />

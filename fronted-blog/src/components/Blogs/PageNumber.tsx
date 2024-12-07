@@ -40,7 +40,7 @@ const Pagination = ({ totalBlogs, setPage, page }: PaginationProps) => {
                     <button
                         key={pageNumber}
                         type="button"
-                        className={`min-h-[38px] min-w-[38px] flex justify-center items-center py-2 px-3 text-sm font-head rounded-lg focus:outline-none ${page === pageNumber ? 'bg-gray-700 text-white' : 'text-white hover:bg-gray-600'}`}
+                        className={`min-h-[38px] min-w-[38px] flex justify-center items-center py-2 px-3 text-sm font-head rounded-lg focus:outline-none ${page === pageNumber ? 'border border-gray-100/20 bg-gray-100/10 text-white' : 'text-white hover:bg-gray-100/10'}`}
                         onClick={() => setPage(pageNumber)}
                         aria-current={page === pageNumber ? 'page' : undefined}
                     >

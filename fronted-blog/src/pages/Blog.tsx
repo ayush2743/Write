@@ -9,11 +9,7 @@ import BlogPagination from "../components/Blogs/BlogPagination";
 import { Navigate } from "react-router-dom";
 
 const BlogPage = () => {
-
-    if(localStorage.getItem('jwt') === null) {
-        return <Navigate to="/signin" />
-    }
-
+    
     return (
         <div className="flex flex-col min-h-screen bg-black overflow-y-hidden">
             <Bubbles />
