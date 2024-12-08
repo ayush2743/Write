@@ -6,7 +6,6 @@ export default function Headings() {
             </h1>
             <p className="mb-10 text-lg text-gray-400">
                 Here you can find all the blogs you have written. You can edit or delete them.
-
             </p>
         </>
     );

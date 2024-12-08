@@ -1,6 +1,7 @@
 import { blogAtomFamily } from '../../atoms/blogAtom';
-import { useRecoilValueLoadable } from 'recoil';
-import { useState, useRef, useEffect } from 'react';
+import { singleBlogAtom } from '../../atoms/singleBlogAtom';
+import { useRecoilState, useRecoilValueLoadable } from 'recoil';
+import { useState, useRef } from 'react';
 import Content from './Content';
 import Skeleton from './Skeleton';
 import { useNavigate } from 'react-router-dom';
@@ -14,6 +15,7 @@ export default function BlogPagination({edit}: {edit: boolean}) {
     const navigate = useNavigate();
 
     const blogsLoadable = useRecoilValueLoadable(blogAtomFamily({page, isUser: edit}));
+    const [ singleBlog , setSingleBlog] = useRecoilState(singleBlogAtom);
 
 
     if (blogsLoadable.state === 'loading') {
@@ -50,17 +52,24 @@ export default function BlogPagination({edit}: {edit: boolean}) {
         window.location.reload();
     }
 
+
     const blogs = blogsLoadable.contents.blogs;
     totalBlogs.current = blogsLoadable.contents.totalBlogs;
 
 
+    function handleOnClick(blog : any) {
+        setSingleBlog(blog);
+        if(singleBlog) {
+            navigate(`/blog`);
+        }
+    }
 
 
     return (
         <div className="flex flex-col">
             <div className="grid max-w-5xl grid-cols-2 gap-x-14 gap-y-16 mx-auto">
                 {blogs.map((blog: any, index: number) => (
-                    <Content key={blog.id} index={index} blogs={blog} edit={edit} onDelete={() => handleDeleteBlog()}/>
+                    <Content key={blog.id} index={index} blogs={blog} edit={edit} onDelete={() => handleDeleteBlog()} onClick={() => handleOnClick(blog)}/>
                 ))}
             </div>
         

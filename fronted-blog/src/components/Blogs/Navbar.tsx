@@ -38,7 +38,7 @@ export default function Navbar({ home }: { home: boolean }) {
             </div>
             <div className="flex space-x-7 font-bold font-serif text-md">
                 <div className="flex items-center text-white cursor-pointer hover:underline">
-                    <span>Create</span>
+                    <span onClick={handleCreate}>Create</span>
                 </div>
                 { home ? (
                     <div className="flex items-center text-white cursor-pointer hover:underline">

@@ -32,11 +32,6 @@ export default function Footer() {
                                     Twitter
                                 </a>
                             </li>
-                            <li>
-                                <a href="#" className="hover:text-blue-400">
-                                    Facebook
-                                </a>
-                            </li>
                         </ul>
                     </div>
                 </div>

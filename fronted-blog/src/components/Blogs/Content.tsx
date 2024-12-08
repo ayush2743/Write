@@ -1,5 +1,4 @@
 import { EditIcon, Trash2Icon } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 
@@ -8,28 +7,22 @@ interface MyContentProps {
     blogs: any;
     edit: boolean;
     onDelete: () => void;
+    onClick: () => void;
 }
 
 
-export default function Content({ index, blogs, edit, onDelete}: MyContentProps) {
+export default function Content({ index, blogs, edit, onDelete, onClick}: MyContentProps) {
     const gradients = [
         "from-blue-200 to-purple-300",
         "from-green-200 to-teal-300",
         "from-indigo-200 to-blue-300",
         "from-pink-200 to-orange-300",
-        "from-yellow-200 to-red-300",
-        "from-purple-200 to-pink-300",
-        "from-gray-200 to-slate-300",
-        "from-cyan-200 to-lime-300",
+        // "from-yellow-200 to-red-300",
+        // "from-purple-200 to-pink-300",
+        // "from-gray-200 to-slate-300",
+        // "from-cyan-200 to-lime-300",
     ];
-
-    function handleBlogClick() {
-
-        const Navigate = useNavigate();
-        const key = blogs.id;
-        console.log(key);
-        Navigate(`/blog/${key}`);
-    }
+    
 
     async function handleDelete() {
 
@@ -62,7 +55,7 @@ export default function Content({ index, blogs, edit, onDelete}: MyContentProps)
     return (
         <div>
             <div className={`bg-gray-900/10 border-2  border-gray-200/20  rounded-lg overflow-hidden transform transition hover:bg-zinc-900 cursor-pointer`}
-                onClick={handleBlogClick}
+                onClick={onClick}
             >
                 <div className={`h-1 w-full bg-gradient-to-r ${gradients[index]}`}></div>
                 <div className="p-9">
