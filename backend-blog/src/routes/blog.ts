@@ -15,7 +15,39 @@ export const blogRouter = new Hono<{
 }>();
 
 
-blogRouter.use('/*', async (c, next) => {
+
+// ------------------- Fetch Specific blog ------------------- //
+blogRouter.get('/:id', async (c) => {
+
+    console.log('HElo');
+
+    try {
+        const prisma = new PrismaClient({
+            datasourceUrl: c.env?.DATABASE_URL,
+        }).$extends(withAccelerate());
+
+        const id = c.req.param('id');
+
+        const blog = await prisma.post.findUnique({
+            where: {
+                id: id,
+            },
+            include: {
+                author: {
+                    select: {
+                        name: true
+                    }
+                }
+            }
+        })
+        return c.json({ blog });
+    } catch (e) {
+        return c.json({ error: "Error while fetching blog" }, 500); //Internal Server Error
+    }
+}); 
+
+
+blogRouter.use('/post/*', async (c, next) => {
 
     try {
         const header = c.req.header('Authorization') || '';
@@ -37,7 +69,7 @@ blogRouter.use('/*', async (c, next) => {
 
 
 // ------------------- Create blog ------------------- //
-blogRouter.post('/', async (c) => {
+blogRouter.post('/post', async (c) => {
 
     try {
         const prisma = new PrismaClient({
@@ -48,7 +80,7 @@ blogRouter.post('/', async (c) => {
         const { success } = postBlogBody.safeParse(body);
 
         if (!success) {
-            return c.json({ error: "Invalid Request" }, 400); //Bad Request
+            return c.json({ error: "Please enter valid input" }, 400); //Bad Request
         }
 
         const blog = await prisma.post.create({
@@ -70,7 +102,7 @@ blogRouter.post('/', async (c) => {
 
 
 // ------------------- Update blog ------------------- //
-blogRouter.put('/', async (c) => {
+blogRouter.put('/post', async (c) => {
 
     try {
         const prisma = new PrismaClient({
@@ -81,7 +113,7 @@ blogRouter.put('/', async (c) => {
         const { success } = updateBlogBody.safeParse(body);
 
         if (!success) {
-            return c.json({ error: "Invalid Request" }, 400); //Bad Request
+            return c.json({ error: "Please enter valid input" }, 400); //Bad Request
         }
 
         const blog = await prisma.post.update({
@@ -91,6 +123,7 @@ blogRouter.put('/', async (c) => {
             },
             data: {
                 title: body.title,
+                description: body.description,
                 content: body.content
             }
         })
@@ -104,7 +137,7 @@ blogRouter.put('/', async (c) => {
 
 
 // ------------------- Delete blog ------------------- //
-blogRouter.delete('/', async (c) => {
+blogRouter.delete('/post', async (c) => {
 
     try {
         const prisma = new PrismaClient({
@@ -134,7 +167,7 @@ blogRouter.delete('/', async (c) => {
 
 
 // ------------------- Fetch all user blogs ------------------- //
-blogRouter.get('/user-blogs', async (c) => {
+blogRouter.get('/post/user-blogs', async (c) => {
 
     try {
         const prisma = new PrismaClient({
@@ -183,7 +216,7 @@ blogRouter.get('/user-blogs', async (c) => {
 
 
 // ------------------- Fetch all blogs ------------------- //
-blogRouter.get('/all', async (c) => {
+blogRouter.get('/post/all', async (c) => {
 
     try {
         const prisma = new PrismaClient({
@@ -218,33 +251,7 @@ blogRouter.get('/all', async (c) => {
 
 
 
-// ------------------- Fetch Specific blog ------------------- //
-blogRouter.get('/:id', async (c) => {
 
-    try {
-        const prisma = new PrismaClient({
-            datasourceUrl: c.env?.DATABASE_URL,
-        }).$extends(withAccelerate());
-
-        const id = c.req.param('id');
-
-        const blog = await prisma.post.findUnique({
-            where: {
-                id: id,
-            },
-            include: {
-                author: {
-                    select: {
-                        name: true
-                    }
-                }
-            }
-        })
-        return c.json({ blog });
-    } catch (e) {
-        return c.json({ error: "Error while fetching blog" }, 500); //Internal Server Error
-    }
-});
 
 
 

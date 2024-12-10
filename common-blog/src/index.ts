@@ -14,7 +14,7 @@ export const signInBody = z.object({
 
 export const postBlogBody = z.object({
     title: z.string(),
-    desciption: z.string(),
+    description: z.string(),
     content: z.string()
 })
 

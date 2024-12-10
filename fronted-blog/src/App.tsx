@@ -19,7 +19,7 @@ function App() {
                         <Route path="/signin" element={<Signin />} />
                         <Route path="/blogs" element={<ProtectedRoute><Blog /></ProtectedRoute>} />
                         <Route path="/myself" element={<ProtectedRoute><MySelf /></ProtectedRoute> } />
-                        <Route path='/blog' element={<ProtectedRoute><SingleBlog /></ProtectedRoute>} />
+                        <Route path='/blog/:id' element={<SingleBlog />} />
                         <Route path='/create' element={<ProtectedRoute><Create /></ProtectedRoute>} />
                     </Routes>
                 </BrowserRouter>

@@ -20,7 +20,7 @@ export default function Skeleton({ edit }: { edit: boolean }) {
                     <div>
                         <div
                             key={index}
-                            className={`bg-gray-900/30 shadow-sm shadow-gray-500 border border-white rounded-lg overflow-hidden transform transition hover:scale-y-105 hover:shadow-xl cursor-pointer`}
+                            className={`h-64 bg-gray-900/30 shadow-sm shadow-gray-500 border border-white rounded-lg overflow-hidden transform transition hover:scale-y-105 hover:shadow-xl cursor-pointer`}
                         >
                             <div className={`h-2 w-full bg-gradient-to-r ${gradient}`}></div>
                             <div className="p-9 animate-pulse">

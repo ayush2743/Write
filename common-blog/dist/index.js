@@ -16,7 +16,7 @@ exports.signInBody = zod_1.default.object({
 });
 exports.postBlogBody = zod_1.default.object({
     title: zod_1.default.string(),
-    desciption: zod_1.default.string(),
+    description: zod_1.default.string(),
     content: zod_1.default.string()
 });
 exports.updateBlogBody = zod_1.default.object({

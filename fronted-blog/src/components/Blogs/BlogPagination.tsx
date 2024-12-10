@@ -28,9 +28,6 @@ export default function BlogPagination({edit}: {edit: boolean}) {
     }
 
     if (blogsLoadable.state === 'hasError') {
-
-        console.log(blogsLoadable.contents.response.data.error);
-
         if (blogsLoadable.contents.message === 'No authentication token found') {
             navigate('/signin');
         } else if (blogsLoadable.contents.response.data.error === 'Error while authorization') {
@@ -59,17 +56,18 @@ export default function BlogPagination({edit}: {edit: boolean}) {
 
     function handleOnClick(blog : any) {
         setSingleBlog(blog);
+        console.log(blog.id);
         if(singleBlog) {
-            navigate(`/blog`);
+            navigate(`/blog/${blog.id}`);
         }
     }
 
 
     return (
         <div className="flex flex-col">
-            <div className="grid max-w-5xl grid-cols-2 gap-x-14 gap-y-16 mx-auto">
+            <div className="grid max-w-5xl w-full grid-cols-2 gap-x-14 gap-y-16 mx-auto">
                 {blogs.map((blog: any, index: number) => (
-                    <Content key={blog.id} index={index} blogs={blog} edit={edit} onDelete={() => handleDeleteBlog()} onClick={() => handleOnClick(blog)}/>
+                    <Content key={blog.id} index={index} blog={blog} edit={edit} onDelete={() => handleDeleteBlog()} onClick={() => handleOnClick(blog)}/>
                 ))}
             </div>
         

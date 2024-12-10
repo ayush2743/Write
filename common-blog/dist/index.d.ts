@@ -24,15 +24,15 @@ export declare const signInBody: z.ZodObject<{
 }>;
 export declare const postBlogBody: z.ZodObject<{
     title: z.ZodString;
-    desciption: z.ZodString;
+    description: z.ZodString;
     content: z.ZodString;
 }, "strip", z.ZodTypeAny, {
     title: string;
-    desciption: string;
+    description: string;
     content: string;
 }, {
     title: string;
-    desciption: string;
+    description: string;
     content: string;
 }>;
 export declare const updateBlogBody: z.ZodObject<{

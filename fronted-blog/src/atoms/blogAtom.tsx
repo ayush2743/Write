@@ -15,7 +15,7 @@ const blogAtomFamily = atomFamily({
                     if (!token) {
                         throw new Error('No authentication token found');
                     }
-                    const url = isUser ? `${BACKEND_URL}/blog/user-blogs?limit=4&offset=${(page - 1) * 4}` : `${BACKEND_URL}/blog/all?limit=4&offset=${(page - 1) * 4}`;
+                    const url = isUser ? `${BACKEND_URL}/blog/post/user-blogs?limit=4&offset=${(page - 1) * 4}` : `${BACKEND_URL}/blog/post/all?limit=4&offset=${(page - 1) * 4}`;
                     const res = await axios.get(`${url}`, {
                         headers: {
                             Authorization: `${token}`
@@ -24,7 +24,6 @@ const blogAtomFamily = atomFamily({
                     return res.data;
                 } catch (error : any) {
 
-                    console.log(error.response.data.error);
 
                     if (error.message === 'No authentication token found') {
                         throw error;
