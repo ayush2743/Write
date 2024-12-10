@@ -1,8 +1,6 @@
-import { Navigate } from "react-router-dom"
 import Bubbles from "../components/Bubles"
 import Navbar from "../components/Blogs/Navbar"
 import Headings from "../components/MyBlogs/Headings"
-import SearchElement from "../components/Blogs/Search"
 import Quote from "../components/Blogs/Quote"
 import Footer from "../components/Blogs/Footer"
 import BlogPagination from "../components/Blogs/BlogPagination"
