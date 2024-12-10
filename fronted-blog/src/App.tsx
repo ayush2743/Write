@@ -7,6 +7,7 @@ import MySelf from './pages/MySelf'
 import ProtectedRoute from './components/Blogs/ProtectedRoute'
 import SingleBlog from './pages/SingleBlog'
 import Create from './pages/Create'
+import { Navigate } from 'react-router-dom'
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
             <RecoilRoot>
                 <BrowserRouter>
                     <Routes>
+                        <Route path="/" element={<Home/>} />
                         <Route path="/signup" element={<Signup />} />
                         <Route path="/signin" element={<Signin />} />
                         <Route path="/blogs" element={<ProtectedRoute><Blog /></ProtectedRoute>} />
@@ -27,6 +29,10 @@ function App() {
 
         </div>
     )
+}
+
+function Home() {
+    return <Navigate to='/blogs' />
 }
 
 export default App

@@ -17,9 +17,9 @@ export default function Skeleton({ edit }: { edit: boolean }) {
 
             <div className="grid max-w-5xl grid-cols-2 gap-x-14 gap-y-16 mx-auto">
                 {gradients.map((gradient, index) => (
-                    <div>
+                    <div key={index}>
                         <div
-                            key={index}
+                            
                             className={`h-64 bg-gray-900/30 shadow-sm shadow-gray-500 border border-white rounded-lg overflow-hidden transform transition hover:scale-y-105 hover:shadow-xl cursor-pointer`}
                         >
                             <div className={`h-2 w-full bg-gradient-to-r ${gradient}`}></div>
