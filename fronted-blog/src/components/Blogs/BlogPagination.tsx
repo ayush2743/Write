@@ -56,7 +56,6 @@ export default function BlogPagination({edit}: {edit: boolean}) {
 
     function handleOnClick(blog : any) {
         setSingleBlog(blog);
-        console.log(blog.id);
         if(singleBlog) {
             navigate(`/blog/${blog.id}`);
         }

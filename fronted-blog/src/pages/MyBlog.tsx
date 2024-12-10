@@ -19,9 +19,6 @@ export default function MySelf() {
                 <Navbar home={true}/>
                 <div className="mx-auto flex flex-col items-left w-4/5 justify-center text-center overflow-y-hidden">
                     <Headings />
-                    <div className="m-7 flex justify-center">
-                        <SearchElement onChange={() => { }} />
-                    </div>
                 </div>
                 <div className="min-h-screen px-10 py-16 content-center overflow-y-hidden">
                     <BlogPagination edit={true}/>

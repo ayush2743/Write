@@ -6,22 +6,25 @@ import SearchElement from "../components/Blogs/Search";
 import Quote from "../components/Blogs/Quote";
 import Footer from "../components/Blogs/Footer";
 import BlogPagination from "../components/Blogs/BlogPagination";
-import { Navigate } from "react-router-dom";
 
 const BlogPage = () => {
     
     return (
-        <div className="flex flex-col min-h-screen bg-black overflow-y-hidden">
+        <div className="flex flex-col  bg-loginPage bg-contain bg-no-repeat bg-black overflow-y-hidden">
             <Bubbles />
-            <div className="bg-loginPage bg-cover bg-center overflow-y-hidden">
+
+            {/* Navbar */}
+            <div className="overflow-y-hidden">
                 <Navbar home={false}/>
-                <div className="flex flex-col items-center justify-center h-screen text-center overflow-y-hidden">
+                <div className="mx-auto mb-20 flex flex-col items-left w-4/5 justify-center text-center overflow-y-hidden">
                     <Headings />
-                    <SearchElement onChange={() => { }} />
+                    <div className="m-7 flex justify-center">
+                        <SearchElement/>
+                    </div>
                 </div>
-            </div>
-            <div className="min-h-screen px-10 py-16 content-center overflow-y-hidden">
-                <BlogPagination edit={false} />
+                <div className="min-h-screen px-10 py-16 content-center overflow-y-hidden">
+                    <BlogPagination edit={false}/>
+                </div>
             </div>
             <Quote />
             <Footer />

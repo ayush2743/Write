@@ -250,6 +250,42 @@ blogRouter.get('/post/all', async (c) => {
 });
 
 
+blogRouter.post('/search', async (c) => {
+
+    try {
+        const prisma = new PrismaClient({
+            datasourceUrl: c.env?.DATABASE_URL,
+        }).$extends(withAccelerate());
+
+        const body = await c.req.json();
+        
+        if (!body.search.trim()) {
+            return c.json({ blogs: [] });
+        }
+
+        const blogs = await prisma.post.findMany({
+            where: {
+                title:{
+                    contains: body.search,
+                    mode: 'insensitive',
+                }
+            },
+            include: {
+                author: {
+                    select: {
+                        name: true
+                    }
+                }
+            }   
+        });
+
+        return c.json({blogs});
+    } catch (e) {
+        return c.json({ error: "Error while fetching blogs" }, 500); //Internal Server Error
+    }
+
+});
+
 
 
 

@@ -3,7 +3,7 @@ import Signup from './pages/Signup'
 import Signin from './pages/Signin'
 import Blog from './pages/Blog'
 import { RecoilRoot } from 'recoil'
-import MySelf from './pages/MySelf'
+import MySelf from './pages/MyBlog'
 import ProtectedRoute from './components/Blogs/ProtectedRoute'
 import SingleBlog from './pages/SingleBlog'
 import Create from './pages/Create'
@@ -12,7 +12,7 @@ import { Navigate } from 'react-router-dom'
 function App() {
 
     return (
-        <div className="overflow-hidden">
+        <div className="overflow-y-hidden">
             <RecoilRoot>
                 <BrowserRouter>
                     <Routes>
