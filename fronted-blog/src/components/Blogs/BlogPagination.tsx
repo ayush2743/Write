@@ -28,14 +28,18 @@ export default function BlogPagination({edit}: {edit: boolean}) {
     }
 
     if (blogsLoadable.state === 'hasError') {
+
+        console.log(blogsLoadable.contents.message);
+
         if (blogsLoadable.contents.message === 'No authentication token found') {
             navigate('/signin');
-        } else if (blogsLoadable.contents.response.data.error === 'Error while authorization') {
+        } else if (blogsLoadable.contents.message === 'Network Error') {
+            navigate('/error');
+        } 
+        else if (blogsLoadable.contents.response.data.error === 'Error while authorization') {
             console.log('Error while authorization');
             navigate('/signin');
         }
-
-        window.location.reload();
 
         return (
             <>

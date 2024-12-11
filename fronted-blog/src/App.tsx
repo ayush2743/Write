@@ -8,6 +8,7 @@ import ProtectedRoute from './components/Blogs/ProtectedRoute'
 import SingleBlog from './pages/SingleBlog'
 import Create from './pages/Create'
 import { Navigate } from 'react-router-dom'
+import Erro404 from './pages/Error404'
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
                         <Route path="/myself" element={<ProtectedRoute><MySelf /></ProtectedRoute> } />
                         <Route path='/blog/:id' element={<SingleBlog />} />
                         <Route path='/create' element={<ProtectedRoute><Create /></ProtectedRoute>} />
+                        <Route path='/error' element={<Erro404 />} />
                     </Routes>
                 </BrowserRouter>
             </RecoilRoot>

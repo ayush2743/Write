@@ -24,6 +24,11 @@ const blogAtomFamily = atomFamily({
                     return res.data;
                 } catch (error : any) {
 
+                    console.log(error.message);
+
+                    if(error.message === 'Network Error') {
+                        throw new Error('Network Error');
+                    }
 
                     if (error.message === 'No authentication token found') {
                         throw error;
