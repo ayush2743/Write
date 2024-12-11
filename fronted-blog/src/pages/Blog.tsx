@@ -10,19 +10,19 @@ import BlogPagination from "../components/Blogs/BlogPagination";
 const BlogPage = () => {
     
     return (
-        <div className="flex flex-col  bg-loginPage bg-contain bg-no-repeat bg-black overflow-y-hidden">
+        <div className="flex flex-col  bg-loginPage bg-contain bg-no-repeat bg-black overflow-x-hidden">
             <Bubbles />
 
             {/* Navbar */}
-            <div className="overflow-y-hidden">
+            <div className="overflow-x-hidden z-10">
                 <Navbar home={false}/>
-                <div className="mx-auto mb-20 flex flex-col items-left w-4/5 justify-center text-center overflow-y-hidden">
+                <div className="mx-auto mb-20 flex flex-col items-left w-4/5 justify-center text-center overflow-x-hidden">
                     <Headings />
                     <div className="m-7 flex justify-center">
                         <SearchElement/>
                     </div>
                 </div>
-                <div className="min-h-screen px-10 py-16 content-center overflow-y-hidden">
+                <div className="min-h-screen px-10 py-16 content-center overflow-x-hidden">
                     <BlogPagination edit={false}/>
                 </div>
             </div>

@@ -19,7 +19,7 @@ function Signup() {
         <div className="relative h-screen overflow-hidden bg-center bg-cover bg-loginPage">
 
             <div className="z-10 flex items-center justify-center h-screen">
-                <div className="w-full max-w-md p-10 text-white rounded-md ">
+                <div className="w-full max-w-md p-10 text-white rounded-md z-10">
                     <Heading title="Sign Up," />
                     <CheckReg question="Already a member?" link="Sign In" />
                     <Inputs />

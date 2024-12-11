@@ -10,7 +10,7 @@ function BlogEditor({ postBody, setPostBody }: { postBody: PostBlogBody, setPost
     const modules = useMemo(() => ({
         toolbar: {
             container: [
-                [{ header: [1, 2, 3, 4, 5, false] }],
+                [{ header: [1, 2, 3, false] }],
                 ["bold", "italic", "underline", "strike"],
                 [{ list: "ordered" }, { list: "bullet" }],
                 [{ indent: "-1" }, { indent: "+1" }],
@@ -20,9 +20,12 @@ function BlogEditor({ postBody, setPostBody }: { postBody: PostBlogBody, setPost
         },
     }), []);
 
+
     function handleChange(value: string) {
         setPostBody({ ...postBody, content: value });
     }
+
+    
 
     return (
         <>
@@ -30,7 +33,7 @@ function BlogEditor({ postBody, setPostBody }: { postBody: PostBlogBody, setPost
                 <ReactQuill
                     ref={quillRef}
                     value={postBody.content}
-                    onChange={handleChange}
+                    onChange={(e) => handleChange(e)}
                     modules={modules}
                     style={{ height: "500px", width: "700px" }}
                     placeholder="Write your blog content here..."

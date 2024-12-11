@@ -4,9 +4,10 @@ export default function Headings() {
             <h1 className="mb-10  mt-24 mx-9 text-8xl font-bold font-serif text-white">
                 Your writing has the power to inspire change.
             </h1>
-            <p className="mb-10 text-xl text-gray-600 font-serif">
+            <p className="mb-10 text-2xl text-gray-600 font-serif">
                 Write with passion, share with purpose. Your journey to impactful
-                blogging starts here.
+                blogging starts 
+                <span className="text-yellow-100/80"> here.</span>
             </p>
         </>
     );

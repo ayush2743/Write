@@ -443,7 +443,7 @@
   .ql-snow .ql-toolbar .ql-picker-item:hover,
   .ql-snow.ql-toolbar .ql-picker-item.ql-selected,
   .ql-snow .ql-toolbar .ql-picker-item.ql-selected {
-    color: white;
+    color: black;
   }
   .ql-snow.ql-toolbar button:hover .ql-fill,
   .ql-snow .ql-toolbar button:hover .ql-fill,
@@ -946,9 +946,11 @@
     content: "Enter video:";
   }
   .ql-snow a {
-    color: white;
+    color: gray;
   }
   .ql-container.ql-snow {
     border: 1px solid #ccc;
   }
+
+
   

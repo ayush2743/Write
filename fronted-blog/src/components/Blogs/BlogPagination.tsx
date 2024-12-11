@@ -37,7 +37,6 @@ export default function BlogPagination({edit}: {edit: boolean}) {
             navigate('/error');
         } 
         else if (blogsLoadable.contents.response.data.error === 'Error while authorization') {
-            console.log('Error while authorization');
             navigate('/signin');
         }
 

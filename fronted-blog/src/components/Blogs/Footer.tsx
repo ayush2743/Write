@@ -1,6 +1,6 @@
 export default function Footer() {
     return (
-        <footer className="py-12 text-gray-100 bg-black overflow-y-hidden">
+        <footer className="py-12 text-gray-100 bg-black overflow-x-hidden">
             <div className="max-w-6xl flex flex-col md:flex-row justify-between gap-8 px-10 mx-auto">
                 <div className="mb-8 md:mb-0">
                     <h4 className="mb-4 font-bold">About Write</h4>

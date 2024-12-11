@@ -1,10 +1,14 @@
 import { EditIcon, Trash2Icon } from 'lucide-react';
 import axios from 'axios';
-
+import { singleBlogAtom } from '../../atoms/singleBlogAtom';
+import { useRecoilState } from 'recoil';
+import { useNavigate } from 'react-router-dom';
+import { BlogInterface } from '../../pages/SingleBlog';
+import formatDate from './Date';
 
 interface MyContentProps {
     index: number;
-    blog: any;
+    blog: BlogInterface;
     edit: boolean;
     onDelete: () => void;
     onClick: () => void;
@@ -22,6 +26,16 @@ export default function Content({ index, blog, edit, onDelete, onClick }: MyCont
         // "from-gray-200 to-slate-300",
         // "from-cyan-200 to-lime-300",
     ];
+
+    const [singleBlog, setSingleBlog] = useRecoilState(singleBlogAtom);
+    const navigate = useNavigate();
+
+    function handleUpdate() {
+        setSingleBlog(blog);
+        if (singleBlog) {
+            navigate(`/update/${blog.id}`);
+        }
+    }
 
 
     async function handleDelete() {
@@ -41,7 +55,7 @@ export default function Content({ index, blog, edit, onDelete, onClick }: MyCont
             });
             onDelete();
         } catch (error: any) {
-            console.log(error.response.data.error);
+            console.log(error);
             if (error.message === 'No authentication token found') {
                 throw error;
             }
@@ -69,15 +83,19 @@ export default function Content({ index, blog, edit, onDelete, onClick }: MyCont
                     </div>
                     <div className="mb-2 absolute bottom-5 left-9 right-9 flex items-center justify-between text-sm text-white font-head">
                         <span>{blog.author.name}</span>
-                        <span>{new Date(blog.publishedAt).toLocaleDateString()}</span>
+                        <span>{blog.publishedAt === blog.updatedAt ? (
+                            <p>{formatDate(blog.publishedAt)}</p>
+                        ) : (
+                            <p>Updated: {formatDate(blog.updatedAt)}</p>
+                        )}</span>
                     </div>
                 </div>
             </div>
             {edit &&
                 <div className="flex justify-between mt-4 text-sm">
-                    <button className="mr-2 w-1/2 flex justify-between items-center text-gray-200  border-2  border-gray-200/20  px-4 py-2  rounded-lg font-serif hover:shadow-sm hover:shadow-gray-100">
+                    <button className="mr-2 w-1/2 flex justify-between items-center text-gray-200  border-2  border-gray-200/20  px-4 py-2  rounded-lg font-serif hover:shadow-sm hover:shadow-gray-100" onClick={handleUpdate}>
                         <span>Edit</span>
-                        <EditIcon size={15}/>
+                        <EditIcon size={15} />
                     </button>
                     <button className="w-1/2 flex justify-between items-center text-gray-200  border-2  border-gray-200/20  px-4 py-2  rounded-lg font-serif hover:shadow-sm hover:shadow-gray-100" onClick={handleDelete}>
                         <span>Delete</span>

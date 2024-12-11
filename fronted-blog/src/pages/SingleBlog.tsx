@@ -4,17 +4,22 @@ import DOMPurify from 'dompurify';
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import Bubbles from "../components/Bubles";
+import Navbar from "../components/Blogs/Navbar";
+import Quote from "../components/Blogs/Quote";
+import Footer from "../components/Blogs/Footer";
+import formatDate from "../components/Blogs/Date";
 
 
-interface Blog {
+export interface BlogInterface {
     id: string;
     title: string;
     description: string;
     content: string;
     published: boolean;
     authorId: string;
-    publishedAt: string; // Use Date if handling as Date
-    updatedAt: string; // Use Date if handling as Date
+    publishedAt: string; 
+    updatedAt: string; 
     author: {
         name: string;
     };
@@ -26,7 +31,7 @@ export default function SingleBlog() {
 
     const value = useRecoilValueLoadable(singleBlogAtom);
     const id = useParams().id;
-    const [blog, setBlog] = useState<Blog>({
+    const [blog, setBlog] = useState<BlogInterface>({
         id: '',
         title: '',
         description: '',
@@ -39,7 +44,6 @@ export default function SingleBlog() {
             name: ''
         }
     });
-    const [error, setError] = useState<string>('');
 
     useEffect(() => {
         if (value.state === 'hasValue' && value.contents.id !== '') {
@@ -52,7 +56,6 @@ export default function SingleBlog() {
                     const res = await axios.get(`${BACKEND_URL}/blog/${id}`);
                     setBlog(res.data.blog);
                 } catch (error: any) {
-                    setError(error.response.data.error);
                     throw new Error('Failed to fetch blog..');
                 }
             }
@@ -60,23 +63,38 @@ export default function SingleBlog() {
             fetchBlog();
         }
     }, [value, id]);
-    
+
 
 
     return (
-        <div className="flex flex-col items-center justify-center">
-            <h1 className="text-4xl font-bold font-serif text-black">{blog.title}</h1>
-            <p className="text-lg text-gray-400">{blog.description}</p>
-            <div className="mb-14"
-                dangerouslySetInnerHTML={{
-                    __html: DOMPurify.sanitize(blog.content),
-                }}
-            />
-            <p className="text-lg text-gray-400">{blog.content}</p>
-            <p className="text-lg text-gray-400">{blog.author.name}</p>
-            {blog.publishedAt && <p className="text-lg text-gray-400">{new Date(blog.publishedAt).toLocaleDateString()}</p>}
-            
-            {error && <div>{error}</div>}
+        <div className="flex flex-col  bg-loginPage bg-contain bg-no-repeat bg-black overflow-x-hidden">
+
+            <Bubbles />
+
+            <div className=" overflow-x-hidden z-10">
+                <Navbar home={true} />
+                <div className="mx-auto mb-24 flex flex-col items-left w-4/5 justify-center text-center overflow-x-hidden">
+                    <h1 className="text-6xl font-bold font-serif text-white mt-32 mb-8">{blog.title}</h1>
+                    <p className="text-xl mb-16 font-serif text-gray-200">{blog.description}</p>
+                    <div
+                        className="custom-content mb-14 text-white pl-2 text-left"
+                        dangerouslySetInnerHTML={{
+                            __html: DOMPurify.sanitize(blog.content),
+                        }}
+                    />
+
+                    <p className="text-lg text-right text-gray-400">- {blog.author.name}</p>
+
+
+                    {blog.publishedAt === blog.updatedAt ? (
+                        <p className="text-lg text-right text-gray-400">{formatDate(blog.publishedAt)}</p>
+                    ) : (
+                        <p className="text-lg text-right text-gray-400">Updated: {formatDate(blog.updatedAt)}</p>
+                    )}                
+                </div>
+            </div>
+            <Quote />
+            <Footer />
         </div>
     )
 }

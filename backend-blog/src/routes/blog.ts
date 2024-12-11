@@ -19,8 +19,6 @@ export const blogRouter = new Hono<{
 // ------------------- Fetch Specific blog ------------------- //
 blogRouter.get('/:id', async (c) => {
 
-    console.log('HElo');
-
     try {
         const prisma = new PrismaClient({
             datasourceUrl: c.env?.DATABASE_URL,
@@ -203,7 +201,7 @@ blogRouter.get('/post/user-blogs', async (c) => {
             skip: offset,
             take: limit,
             orderBy: {
-                publishedAt: 'desc'
+                updatedAt: 'desc'
             }
         });
 
@@ -239,7 +237,7 @@ blogRouter.get('/post/all', async (c) => {
             skip: offset,
             take: limit,
             orderBy: {
-                publishedAt: 'desc'
+                updatedAt: 'desc'
             }
         });
 
