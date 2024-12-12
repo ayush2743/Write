@@ -1,14 +1,14 @@
-import { UserIcon, MailIcon,KeyIcon} from "lucide-react";
+import { UserIcon, MailIcon, KeyIcon } from "lucide-react";
 
 interface RegInputProps {
     label: string;
     type: string;
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
     placeholder: string;
-    color: string;  
+    color: string;
 }
 
-export default function RegInput({ label, type, onChange, placeholder, color} : RegInputProps) {
+export default function RegInput({ label, type, onChange, placeholder, color }: RegInputProps) {
     const renderIcon = () => {
         switch (type) {
             case "email":
@@ -37,7 +37,7 @@ export default function RegInput({ label, type, onChange, placeholder, color} : 
                 <div className="absolute inset-y-0 flex items-center pointer-events-none right-3">
                     {renderIcon()}
                 </div>
-            </div>    
+            </div>
         </div>
     )
 }

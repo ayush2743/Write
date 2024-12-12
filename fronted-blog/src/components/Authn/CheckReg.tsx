@@ -1,6 +1,9 @@
+interface CheckRegProps {
+    question: string;
+    link: string;
+}
 
-
-export default function CheckReg({ question, link }: { question: string, link: string }) {
+export default function CheckReg({ question, link }: CheckRegProps) {
     return (
         <div className="flex flex-col mb-8 ml-1">
         <p className="text-gray-200 text-md">

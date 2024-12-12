@@ -7,8 +7,6 @@ import { singleBlogAtom } from '../../atoms/singleBlogAtom';
 import { useRecoilState } from 'recoil';
 
 
-// Ensure this is defined
-
 export default function SearchElement() {
     const [search, setSearch] = useState<string>('');
     const [results, setResults] = useState<any[]>([]);
@@ -52,7 +50,6 @@ export default function SearchElement() {
         if (singleBlog) {
             Navigate(`/blog/${blog.id}`);
         }
-
     }
 
     return (

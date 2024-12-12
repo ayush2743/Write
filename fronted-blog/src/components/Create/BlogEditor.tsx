@@ -1,7 +1,7 @@
 import { PostBlogBody } from "@ayush27/common-blog";
 import { useMemo, useRef } from "react";
 import ReactQuill from "react-quill";
-import "../../quill.css"; // Import Quill styles
+import "../../quill.css"; 
 
 function BlogEditor({ postBody, setPostBody }: { postBody: PostBlogBody, setPostBody: React.Dispatch<React.SetStateAction<PostBlogBody>> }) {
 

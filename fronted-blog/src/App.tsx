@@ -27,6 +27,7 @@ function App() {
                         <Route path='/create' element={<ProtectedRoute><Create /></ProtectedRoute>} />
                         <Route path='/update/:id' element={<ProtectedRoute><Update /></ProtectedRoute>} />
                         <Route path='/error' element={<Erro404 />} />
+                        <Route path='*' element={<Navigate to='/error' />} />
                     </Routes>
                 </BrowserRouter>
             </RecoilRoot>

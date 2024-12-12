@@ -1,4 +1,4 @@
-import { LoaderCircle, LoaderIcon } from "lucide-react";
+import { LoaderCircle } from "lucide-react";
 
 interface ButtonProps {
     text: string;

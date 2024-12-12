@@ -18,7 +18,7 @@ export default function Footer() {
                                 </a>
                             </li>
                             <li>
-                                <a href="#" className="hover:text-blue-400">
+                                <a href="/create" className="hover:text-blue-400">
                                     Create Blog
                                 </a>
                             </li>
@@ -28,7 +28,7 @@ export default function Footer() {
                         <h4 className="mb-4 font-bold">Connect</h4>
                         <ul className="space-y-2">
                             <li>
-                                <a href="#" className="hover:text-blue-400">
+                                <a href="https://x.com/aysxna" target="_blank" className="hover:text-blue-400">
                                     Twitter
                                 </a>
                             </li>

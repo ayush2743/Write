@@ -5,7 +5,7 @@ import CheckReg from "../components/Authn/CheckReg";
 import RegInput from "../components/Authn/RegInput";
 import Button from "../components/Authn/Button";
 import Error from '../components/Authn/Error';
-
+import { useNavigate } from 'react-router-dom';
 import { SignUpBody } from '@ayush27/common-blog';
 import { useState, memo } from 'react';
 import axios from 'axios';
@@ -39,12 +39,14 @@ function Inputs() {
     });
     const [loading, setLoading] = useState<boolean>(false); 
     const [error, setError] = useState<string | null>(null);
-
+    const navigate = useNavigate();
+    
     async function submit() {
         try {
             setLoading(true);
             const response = await axios.post("http://127.0.0.1:8787/api/v1/user/signup", signUpInputs);
-            console.log(response.data.jwt);
+            localStorage.setItem("jwt", response.data.jwt);
+            navigate("/blogs");
             
         } catch (e : any) {
             console.log(e);
