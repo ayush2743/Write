@@ -13,7 +13,7 @@ function Signin() {
 
     return (
 
-        <div className="flex flex-col  bg-loginPage bg-contain sm:bg-cover bg-no-repeat bg-black overflow-x-hidden">
+        <div className="flex flex-col  bg-loginPage bg-contain sm:bg-cover bg-no-repeat bg-black  ">
             <div className="flex items-center justify-center h-screen">
                 <div className="w-full max-w-md p-10 text-white rounded-md z-10">
                     <Heading title="Sign In," />

@@ -9,6 +9,8 @@ export default function Navbar({ home }: { home: boolean }) {
     const navigate = useNavigate();
 
     function handleLogout() {
+        //add reload to clear the cache
+        window.location.reload();
         localStorage.removeItem('jwt');
         sessionStorage.clear();
         navigate('/signin', { replace: true });
@@ -24,7 +26,7 @@ export default function Navbar({ home }: { home: boolean }) {
 
 
     return (
-        <nav className="flex items-center justify-between w-11/12 sm:w-4/5 px-4 sm:px-6 py-4 mx-auto mt-4 bg-white shadow-md rounded-lg bg-opacity-20">
+        <nav className="  flex items-center justify-between w-11/12 sm:w-4/5 px-4 sm:px-6 py-4 mx-auto mt-4 bg-white shadow-md rounded-lg bg-opacity-20">
             <div className="flex items-center">
                 <img src={icon} alt="Write Icon" className="w-6 h-6 mr-2 sm:w-8 sm:h-8" />
                 <h1 className="text-xl sm:text-2xl text-white font-extrabold font-body">

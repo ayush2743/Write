@@ -14,7 +14,7 @@ import Update from './pages/Update'
 function App() {
 
     return (
-        <div className="overflow-x-hidden">
+        <div>
             <RecoilRoot>
                 <BrowserRouter>
                     <Routes>

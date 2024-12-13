@@ -29,7 +29,7 @@ function BlogEditor({ postBody, setPostBody }: { postBody: PostBlogBody, setPost
 
     return (
 
-        <div className=' flex justify-center w-[350px] sm:w-[700px]'>
+        <div className='flex justify-center w-[350px] sm:w-[700px]'>
             <ReactQuill
                 ref={quillRef}
                 value={postBody.content}

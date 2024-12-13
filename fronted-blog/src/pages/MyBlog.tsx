@@ -9,16 +9,16 @@ import BlogPagination from "../components/Blogs/BlogPagination"
 export default function MySelf() {
 
     return (
-        <div className="flex flex-col  bg-loginPage bg-contain bg-no-repeat bg-black overflow-x-hidden">
+        <div className="flex flex-col  bg-loginPage bg-contain bg-no-repeat bg-black  ">
             <Bubbles />
 
             {/* Navbar */}
-            <div className=" overflow-x-hidden z-10">
+            <div className="   z-10">
                 <Navbar home={true}/>
-                <div className="mx-auto flex flex-col items-left w-4/5 justify-center text-center overflow-x-hidden">
+                <div className="mx-auto flex flex-col items-left w-4/5 justify-center text-center  ">
                     <Headings />
                 </div>
-                <div className="min-h-screen px-10 py-16 content-center overflow-x-hidden">
+                <div className="min-h-screen px-10 py-16 content-center  ">
                     <BlogPagination edit={true}/>
                 </div>
             </div>

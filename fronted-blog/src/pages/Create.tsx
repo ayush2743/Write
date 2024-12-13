@@ -16,7 +16,7 @@ import BlogEditor from '../components/Create/BlogEditor';
 function Create() {
 
     return (
-        <div className="min-h-screen  bg-loginPage  bg-contain bg-no-repeat bg-black overflow-x-hidden">
+        <div className="overflow-x-hidden min-h-screen  bg-loginPage  bg-contain bg-no-repeat bg-black  ">
             <Bubbles />
             <Navbar home={true} />
             <div className='flex justify-center'>

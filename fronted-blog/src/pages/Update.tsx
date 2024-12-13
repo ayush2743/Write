@@ -21,7 +21,7 @@ function Update() {
 
     const value = useRecoilValue(singleBlogAtom);
     return (
-        <div className="min-h-screen  bg-loginPage  bg-contain bg-no-repeat bg-black overflow-x-hidden">
+        <div className="min-h-screen  bg-loginPage  bg-contain bg-no-repeat bg-black  ">
             <Bubbles />
             <Navbar home={true} />
             <div className='flex justify-center mx-auto'>

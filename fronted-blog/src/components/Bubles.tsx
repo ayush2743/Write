@@ -39,7 +39,7 @@ const generateBubbles = (count: number) => {
 
 export default function Bubbles() {
     return (
-        <div className="overflow-x-hidden">
+        <div>
             {generateBubbles(200)}
             <style>{`
                 @keyframes rise {
