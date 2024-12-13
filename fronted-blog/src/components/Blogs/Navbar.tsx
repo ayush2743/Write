@@ -1,4 +1,4 @@
-import { LogOut, LogIn } from "lucide-react";
+import { LogIn } from "lucide-react";
 import icon from "../../../src/assets/icon.png";
 import { useNavigate } from "react-router-dom";
 
@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 
 export default function Navbar({ home }: { home: boolean }) {
 
-    const token = localStorage.getItem('jwt');
     const navigate = useNavigate();
 
     function handleLogout() {
