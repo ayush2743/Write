@@ -15,7 +15,7 @@ export default function Skeleton({ edit }: { edit: boolean }) {
 
     return (
 
-            <div className="grid max-w-5xl grid-cols-2 gap-x-14 gap-y-16 mx-auto">
+            <div className="grid max-w-5xl grid-cols-1 sm:grid-cols-2 gap-x-14 gap-y-16 mx-auto">
                 {gradients.map((gradient, index) => (
                     <div key={index}>
                         <div

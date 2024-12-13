@@ -50,6 +50,7 @@ export default function SearchElement() {
         if (singleBlog) {
             Navigate(`/blog/${blog.id}`);
         }
+
     }
 
     return (

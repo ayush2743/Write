@@ -19,7 +19,7 @@ function Create() {
         <div className="min-h-screen  bg-loginPage  bg-contain bg-no-repeat bg-black overflow-x-hidden">
             <Bubbles />
             <Navbar home={true} />
-            <div className='flex justify-center mx-auto'>
+            <div className='flex justify-center'>
                 <Contents />
             </div>
             <Quote />
@@ -86,12 +86,13 @@ function Contents() {
                 <Heading text="Description" />
                 <Input placeholder="Write you description here.." onChange={(e) => {
                     setPostBody({ ...postBody, description: e.target.value })
-                }} />            </div>
+                }} />            
+            </div>
             <div>
                 <Heading text="Content" />
                 <BlogEditor postBody={postBody} setPostBody={setPostBody} />
             </div>
-            <button className="mt-24  w-2/4 flex justify-between items-center text-gray-200  border-2  border-gray-200  px-4 py-2  rounded-lg font-serif hover:shadow-gray-100 hover:shadow-md"
+            <button className="mt-28 sm:mt-24  w-2/4 flex justify-between items-center text-gray-200  border-2  border-gray-200  px-4 py-2  rounded-lg font-serif hover:shadow-gray-100 hover:shadow-md"
                 onClick={handleSubmit}>
                 <span>{loading ? 'Processing...' : 'Create'}</span>
                 {loading ? <LoaderCircle size={15} className="animate-spin" /> : <SendHorizontal size={15} />}

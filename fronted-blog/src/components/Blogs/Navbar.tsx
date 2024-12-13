@@ -15,10 +15,6 @@ export default function Navbar({ home }: { home: boolean }) {
         navigate('/signin', { replace: true });
     }
 
-    function handleLogin() {
-        navigate('/signin');
-    }
-
     function handleCreate() {
         navigate('/create');
     }
@@ -29,36 +25,28 @@ export default function Navbar({ home }: { home: boolean }) {
 
 
     return (
-        <nav className="flex items-center justify-between w-4/5 px-6 py-4 mx-auto mt-4 bg-white shadow-md rounded-lg bg-opacity-20">
+        <nav className="flex items-center justify-between w-11/12 sm:w-4/5 px-4 sm:px-6 py-4 mx-auto mt-4 bg-white shadow-md rounded-lg bg-opacity-20">
             <div className="flex items-center">
-                <img src={icon} alt="Write Icon" className="w-8 h-8 mr-2" />
-                <h1 className="text-2xl text-white font-extrabold font-body">
+                <img src={icon} alt="Write Icon" className="w-6 h-6 mr-2 sm:w-8 sm:h-8" />
+                <h1 className="text-xl sm:text-2xl text-white font-extrabold font-body">
                     Write
                 </h1>
             </div>
-            <div className="flex space-x-7 font-bold font-serif text-md">
+            <div className="flex space-x-4 pt-1 font-bold font-serif text-sm sm:text-md sm:space-x-7">
                 <div className="flex items-center text-white cursor-pointer hover:underline">
                     <span onClick={handleCreate}>Create</span>
                 </div>
-                { home ? (
+                {home ? (
                     <div className="flex items-center text-white cursor-pointer hover:underline">
                         <span onClick={() => navigate('/blogs')}>Home</span>
                     </div>
                 ) : <div className="flex items-center text-white cursor-pointer hover:underline">
-                        <span onClick={handleMyself}>Myself</span>
-                    </div>
+                    <span onClick={handleMyself}>Myself</span>
+                </div>
                 }
                 <div className="flex items-center text-white cursor-pointer hover:underline">
-                    {token ? (
-                        <>
-                            <LogIn size={15} className="mr-2 mb-0.5 text-white" />
-                            <span onClick={handleLogout}>Logout</span>
-                        </>) : (
-                        <>
-                            <LogOut size={15} className="mr-2 mb-0.5 text-white" />
-                            <span onClick={handleLogin}>Login</span>
-                        </>
-                    )}
+                    <LogIn size={15} className="mr-2 mb-0.5 text-white" />
+                    <span className="hidden sm:block" onClick={handleLogout}>Logout</span>
                 </div>
             </div>
         </nav>

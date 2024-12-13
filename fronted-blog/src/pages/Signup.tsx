@@ -16,7 +16,7 @@ function Signup() {
 
 
     return (
-        <div className="relative h-screen overflow-hidden bg-center bg-cover bg-loginPage">
+        <div className="flex flex-col bg-loginPage bg-contain sm:bg-cover bg-no-repeat bg-black overflow-hidden">
 
             <div className="z-10 flex items-center justify-center h-screen">
                 <div className="w-full max-w-md p-10 text-white rounded-md z-10">

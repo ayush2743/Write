@@ -13,8 +13,8 @@ function Signin() {
 
     return (
 
-        <div className="relative h-screen overflow-hidden bg-center bg-cover bg-loginPage">
-            <div className="z-50 flex items-center justify-center h-screen">
+        <div className="flex flex-col  bg-loginPage bg-contain sm:bg-cover bg-no-repeat bg-black overflow-x-hidden">
+            <div className="flex items-center justify-center h-screen">
                 <div className="w-full max-w-md p-10 text-white rounded-md z-10">
                     <Heading title="Sign In," />
                     <CheckReg question="Not a member?" link="Sign Up" />
@@ -58,10 +58,10 @@ function Inputs() {
         <>
             <RegInput label="Email" type="email" onChange={(e) => { 
                 setSignInInputs({ ...signInInputs, email: e.target.value });
-            }} placeholder="Enter your email" color="focus:border-blue-300" />
+            }} placeholder="Ewan@gmail.com" color="focus:border-blue-300" />
             <RegInput label="Password" type="password" onChange={(e) => {
                 setSignInInputs({ ...signInInputs, password: e.target.value });
-             }} placeholder="Enter your password" color="focus:border-purple-300" />
+             }} placeholder="123456" color="focus:border-purple-300" />
             {error && <Error text={error} />}
             <Button text="Continue." handleCLick={submit} loading={loading} />
 

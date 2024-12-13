@@ -1,7 +1,7 @@
 import { PostBlogBody } from "@ayush27/common-blog";
 import { useMemo, useRef } from "react";
 import ReactQuill from "react-quill";
-import "../../quill.css"; 
+import "../../quill.css";
 
 function BlogEditor({ postBody, setPostBody }: { postBody: PostBlogBody, setPostBody: React.Dispatch<React.SetStateAction<PostBlogBody>> }) {
 
@@ -25,21 +25,21 @@ function BlogEditor({ postBody, setPostBody }: { postBody: PostBlogBody, setPost
         setPostBody({ ...postBody, content: value });
     }
 
-    
+
 
     return (
-        <>
-            <div className=' flex justify-center'>
-                <ReactQuill
-                    ref={quillRef}
-                    value={postBody.content}
-                    onChange={(e) => handleChange(e)}
-                    modules={modules}
-                    style={{ height: "500px", width: "700px" }}
-                    placeholder="Write your blog content here..."
-                />
-            </div>
-        </>
+
+        <div className=' flex justify-center w-[350px] sm:w-[700px]'>
+            <ReactQuill
+                ref={quillRef}
+                value={postBody.content}
+                onChange={(e) => handleChange(e)}
+                modules={modules}
+                style={{ height: "500px", width: "100%" }}
+                className=""
+                placeholder="Write your blog content here..."
+            />
+        </div>
     );
 }
 

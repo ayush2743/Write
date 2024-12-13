@@ -69,7 +69,7 @@ export default function BlogPagination({ edit }: { edit: boolean }) {
         <div className="flex flex-col">
             {blogs.length > 0 ?
                 <>
-                    <div className="grid max-w-5xl w-full grid-cols-2 gap-x-14 gap-y-16 mx-auto">
+                    <div className="grid max-w-5xl w-full  grid-cols-1 sm:grid-cols-2 gap-x-14 gap-y-16 mx-auto">
                         {blogs.map((blog: any, index: number) => (
                             <Content key={blog.id} index={index} blog={blog} edit={edit} onDelete={() => handleDeleteBlog()} onClick={() => handleOnClick(blog)} />
                         ))}

@@ -74,8 +74,8 @@ export default function SingleBlog() {
             <div className=" overflow-x-hidden z-10">
                 <Navbar home={true} />
                 <div className="mx-auto mb-24 flex flex-col items-left w-4/5 justify-center text-center overflow-x-hidden">
-                    <h1 className="text-6xl font-bold font-serif text-white mt-32 mb-8">{blog.title}</h1>
-                    <p className="text-xl mb-16 font-serif text-gray-200">{blog.description}</p>
+                    <h1 className="text-4xl sm:text-6xl font-bold font-serif text-white mt-32 mb-10">{blog.title}</h1>
+                    <p className="text-lg sm:text-xl border-b-2 border-gray-200/30 pb-10 mb-24 font-serif text-gray-200">{blog.description}</p>
                     <div
                         className="custom-content mb-14 text-white pl-2 text-left"
                         dangerouslySetInnerHTML={{
