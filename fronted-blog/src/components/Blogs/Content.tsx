@@ -42,7 +42,7 @@ export default function Content({ index, blog, edit, onDelete, onClick }: MyCont
 
         try {
 
-            const BACKEND_URL = import.meta.env.VITE_APP_BACKEND_URL;
+            const BACKEND_URL = "https://backend-blog.saxenaayush27-work.workers.dev/api/v1";
             const token = localStorage.getItem('jwt');
             if (!token) {
                 throw new Error('No authentication token found');

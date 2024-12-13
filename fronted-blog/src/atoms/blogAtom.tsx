@@ -7,7 +7,7 @@ const blogAtomFamily = atomFamily({
         key: 'blogSelectorFamily',
         get: function ({page, isUser} : {page: number, isUser: boolean}) {
 
-            const BACKEND_URL = import.meta.env.VITE_APP_BACKEND_URL;
+            const BACKEND_URL = "https://backend-blog.saxenaayush27-work.workers.dev/api/v1";
 
             return async () => {
                 try {

@@ -50,7 +50,7 @@ export default function SingleBlog() {
             setBlog(value.contents);
         } else {
             async function fetchBlog() {
-                const BACKEND_URL = import.meta.env.VITE_APP_BACKEND_URL;
+                const BACKEND_URL = "https://backend-blog.saxenaayush27-work.workers.dev/api/v1";
 
                 try {
                     const res = await axios.get(`${BACKEND_URL}/blog/${id}`);

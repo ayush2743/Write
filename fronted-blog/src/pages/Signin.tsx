@@ -41,7 +41,7 @@ function Inputs() {
 
     async function submit() {
 
-        const BACKEND_URL = import.meta.env.VITE_APP_BACKEND_URL;
+        const BACKEND_URL = "https://backend-blog.saxenaayush27-work.workers.dev/api/v1";
         try {
             setLoading(true);
             const response = await axios.post(`${BACKEND_URL}/user/signin`, signInInputs);

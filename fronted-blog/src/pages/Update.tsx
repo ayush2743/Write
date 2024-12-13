@@ -47,7 +47,7 @@ function Contents({blog} : {blog: BlogInterface}) {
     const [loading, setLoading] = useState<boolean>(false);
 
     async function handleSubmit() {
-        const BACKEND_URL = import.meta.env.VITE_APP_BACKEND_URL;
+        const BACKEND_URL = "https://backend-blog.saxenaayush27-work.workers.dev/api/v1";
 
         try {
 
