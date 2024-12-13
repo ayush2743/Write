@@ -40,9 +40,11 @@ function Inputs() {
     const navigate = useNavigate();
 
     async function submit() {
+
+        const BACKEND_URL = import.meta.env.VITE_APP_BACKEND_URL;
         try {
             setLoading(true);
-            const response = await axios.post("http://127.0.0.1:8787/api/v1/user/signin", signInInputs);
+            const response = await axios.post(`${BACKEND_URL}/user/signin`, signInInputs);
             console.log(response);
             localStorage.setItem("jwt", response.data.jwt);
             navigate("/blogs");

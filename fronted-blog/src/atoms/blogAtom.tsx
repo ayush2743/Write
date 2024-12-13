@@ -7,7 +7,7 @@ const blogAtomFamily = atomFamily({
         key: 'blogSelectorFamily',
         get: function ({page, isUser} : {page: number, isUser: boolean}) {
 
-            const BACKEND_URL = "http://127.0.0.1:8787/api/v1"
+            const BACKEND_URL = import.meta.env.VITE_APP_BACKEND_URL;
 
             return async () => {
                 try {

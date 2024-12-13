@@ -47,7 +47,7 @@ function Contents({blog} : {blog: BlogInterface}) {
     const [loading, setLoading] = useState<boolean>(false);
 
     async function handleSubmit() {
-        const BACKEND_URL = "http://127.0.0.1:8787/api/v1";
+        const BACKEND_URL = import.meta.env.VITE_APP_BACKEND_URL;
 
         try {
 

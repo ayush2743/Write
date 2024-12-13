@@ -41,11 +41,13 @@ export default function Content({ index, blog, edit, onDelete, onClick }: MyCont
     async function handleDelete() {
 
         try {
+
+            const BACKEND_URL = import.meta.env.VITE_APP_BACKEND_URL;
             const token = localStorage.getItem('jwt');
             if (!token) {
                 throw new Error('No authentication token found');
             }
-            await axios.delete(`http://127.0.0.1:8787/api/v1/blog/post`, {
+            await axios.delete(`${BACKEND_URL}/blog/post`, {
                 headers: {
                     Authorization: `${token}`
                 },

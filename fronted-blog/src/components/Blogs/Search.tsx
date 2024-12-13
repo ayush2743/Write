@@ -21,7 +21,7 @@ export default function SearchElement() {
 
         async function fetchResults() {
             if (debounce) {
-                const BACKEND_URL = "http://127.0.0.1:8787/api/v1";
+                const BACKEND_URL = import.meta.env.VITE_APP_BACKEND_URL;
                 try {
                     setLoading(true);
                     const response = await axios.post(`${BACKEND_URL}/blog/search`, {
