@@ -8,10 +8,6 @@
 html, body {
     overflow-x: hidden;
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> 344a43fdf84be93654e7cdf4cb47937cef56e963
 
 .custom-content h1 {
     @apply text-4xl font-medium mb-4;
