@@ -70,12 +70,12 @@ export default function Content({ index, blog, edit, onDelete, onClick }: MyCont
 
     return (
         <div>
-            <div className={`h-64 bg-gray-900/10 border-2  border-gray-200/20  rounded-lg overflow-hidden transform transition hover:bg-zinc-900 cursor-pointer`}
+            <div className={`h-72 bg-gray-900/10 border-2  border-gray-200/20  rounded-lg overflow-hidden transform transition hover:bg-zinc-900 cursor-pointer`}
                 onClick={onClick}
             >
                 <div className={`h-1 w-full bg-gradient-to-r ${gradients[index]}`}></div>
-                <div className="p-9">
-                    <h3 className="mb-5 text-2xl font-bold text-white truncate font-serif">
+                <div className="p-7 sm:p-9">
+                    <h3 className="mb-5 text-xl sm:text-2xl font-bold text-white line-clamp-2 font-serif">
                         {blog.title}
                     </h3>
                     <div className=''>

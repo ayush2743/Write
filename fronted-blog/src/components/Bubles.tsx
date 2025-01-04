@@ -40,7 +40,7 @@ const generateBubbles = (count: number) => {
 export default function Bubbles() {
     return (
         <div>
-            {generateBubbles(200)}
+            {generateBubbles(150)}
             <style>{`
                 @keyframes rise {
                     0% {

@@ -36,11 +36,11 @@ html, body {
 }
   
 .custom-content p {
-    @apply mb-4 leading-relaxed ;
+    @apply mb-4 leading-relaxed;
 }
   
 .custom-content img {
-    @apply max-w-full sm:max-w-md h-auto; 
+    @apply max-w-full sm:max-w-md h-auto mx-auto; 
 }
   
 

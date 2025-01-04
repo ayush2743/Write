@@ -22,7 +22,7 @@ const BlogPage = () => {
                         <SearchElement/>
                     </div>
                 </div>
-                <div className="min-h-screen px-10 py-16 content-center  ">
+                <div className="min-h-screen px-7 sm:px-10 py-16 content-center  ">
                     <BlogPagination edit={false}/>
                 </div>
             </div>
