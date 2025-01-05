@@ -21,15 +21,18 @@ function Update() {
 
     const value = useRecoilValue(singleBlogAtom);
     return (
-        <div className="min-h-screen  bg-loginPage  bg-contain bg-no-repeat bg-black  ">
+        <div className="flex flex-col  bg-loginPage bg-contain bg-no-repeat bg-black">
             <Bubbles />
             <Navbar home={true} />
-            <div className='flex justify-center mx-auto'>
-                <Contents blog = {value} />
+            <div>
+                <div className='flex justify-center mx-auto'>
+                    <Contents blog = {value} />
+                </div>
             </div>
             <Quote />
             <Footer />
-        </div>);
+        </div>
+    );
 }
 
 
