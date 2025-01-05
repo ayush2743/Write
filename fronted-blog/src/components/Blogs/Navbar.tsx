@@ -52,10 +52,10 @@ export default function Navbar({ home }: { home: boolean }) {
                 }
                 <div className="flex items-center text-white cursor-pointer hover:underline">
                     { token ? 
-                        <><LogIn size={15} className="mr-2 mb-0.5 text-white" />
+                        <><LogIn size={15} className="mr-2 mb-0.5 text-white" onClick={handleLogout}/>
                         <span className="hidden sm:block" onClick={handleLogout}>Logout</span></> :
 
-                        <><LogOut size={15} className="mr-2 mb-0.5 text-white" />
+                        <><LogOut size={15} className="mr-2 mb-0.5 text-white" onClick={handleLogin}/>
                         <span className="hidden sm:block" onClick={handleLogin}>Login</span></>
                     }
                 </div>
