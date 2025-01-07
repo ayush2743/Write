@@ -9,10 +9,9 @@ import { useNavigate } from "react-router-dom";
 import { SignInBody } from "@ayush27/common-blog";
 import axios from "axios";
 
-function Signin() {
+function signin() {
 
     return (
-
         <div className="flex flex-col  bg-loginPage bg-contain sm:bg-cover bg-no-repeat bg-black  ">
             <div className="flex items-center justify-center h-screen">
                 <div className="w-full max-w-md p-10 text-white rounded-md z-10">
@@ -71,5 +70,5 @@ function Inputs() {
     )
 }
 
-const MemoSignin = memo(Signin);
-export default MemoSignin;
+const Signin = memo(signin);
+export default Signin;

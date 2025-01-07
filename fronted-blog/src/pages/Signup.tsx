@@ -12,7 +12,7 @@ import axios from 'axios';
 
 
 
-function Signup() {
+function signup() {
 
 
     return (
@@ -75,5 +75,5 @@ function Inputs() {
     )
 }
 
-const MemoSignup = memo(Signup);
-export default MemoSignup;
+const Signup = memo(signup);
+export default Signup;

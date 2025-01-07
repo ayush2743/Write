@@ -9,6 +9,7 @@ import Input from '../components/Create/Input';
 import Heading from '../components/Create/Heading';
 import { LoaderCircle, SendHorizontal } from 'lucide-react';
 import BlogEditor from '../components/Create/BlogEditor';
+import Signin from './Signin';
 
 
 
@@ -18,19 +19,20 @@ function Create() {
     const token = localStorage.getItem('jwt');
 
     return (
-        <div className="overflow-x-hidden min-h-screen  bg-loginPage  bg-contain bg-no-repeat bg-black">
-            <Bubbles />
-            <Navbar home={false} />
-            <div className='flex justify-center'>
-                {token ? <Contents token={token} /> :
-                    <div className="flex flex-col items-center min-h-screen text-center justify-center">
-                        <div className='drop-shadow-[2px_2px_4px_rgba(179,214,235,0.5)] text-white font-bold text-xl sm:text-4xl font-serif sm:p-5'>No authentication token found 😪</div>
-                        <div className="items-center text-center text-white flex justify-center text-md font-serif">Please <a href='/signin' className="inline p-2 underline text-blue-300">Login</a> to create a blog 👍  </div>
-                    </div>}
-            </div>
-            <Quote />
-            <Footer />
-        </div>);
+        <>
+            {token ? 
+            <div className="overflow-x-hidden min-h-screen  bg-loginPage  bg-contain bg-no-repeat bg-black">
+                <Bubbles />
+                <Navbar home={false} />
+                <div className='flex justify-center'>
+                    <Contents token={token} />
+                </div>
+                <Quote />
+                <Footer />
+            </div> :
+            <Signin />}
+        </>
+    );
 }
 
 
