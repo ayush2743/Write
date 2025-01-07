@@ -9,20 +9,20 @@ import PageNumber from './PageNumber';
 import { BlogInterface } from '../../pages/SingleBlog';
 
 
-export default function BlogPagination({ edit }: { edit: boolean }) {
+export default function BlogPagination({ user }: { user: boolean }) {
     const [page, setPage] = useState<number>(1);
 
-    const totalBlogs = useRef<number>(3);
+    const totalBlogs = useRef<number>(12);
     const navigate = useNavigate();
 
-    const blogsLoadable = useRecoilValueLoadable(blogAtomFamily({ page, isUser: edit }));
+    const blogsLoadable = useRecoilValueLoadable(blogAtomFamily({ page, isUser: user }));
     const [singleBlog, setSingleBlog] = useRecoilState(singleBlogAtom);
 
 
     if (blogsLoadable.state === 'loading') {
         return (
             <>
-                <Skeleton edit={edit} />
+                <Skeleton user={user} />
                 <PageNumber totalBlogs={totalBlogs.current} setPage={setPage} page={page} />
             </>
         )
@@ -49,11 +49,6 @@ export default function BlogPagination({ edit }: { edit: boolean }) {
         );
     }
 
-    function handleDeleteBlog() {
-        window.location.reload();
-    }
-
-
     const blogs = blogsLoadable.contents.blogs;
     totalBlogs.current = blogsLoadable.contents.totalBlogs;
 
@@ -71,7 +66,7 @@ export default function BlogPagination({ edit }: { edit: boolean }) {
                 <>
                     <div className="grid max-w-5xl w-full  grid-cols-1 sm:grid-cols-2 gap-x-14 gap-y-16 mx-auto">
                         {blogs.map((blog: any, index: number) => (
-                            <Content key={blog.id} index={index} blog={blog} edit={edit} onDelete={() => handleDeleteBlog()} onClick={() => handleOnClick(blog)} />
+                            <Content key={blog.id} index={index} blog={blog} user={user} onClick={() => handleOnClick(blog)} />
                         ))}
                     </div>
                     <PageNumber totalBlogs={totalBlogs.current} setPage={setPage} page={page} />

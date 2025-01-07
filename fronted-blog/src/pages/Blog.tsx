@@ -23,7 +23,7 @@ const BlogPage = () => {
                     </div>
                 </div>
                 <div className="min-h-screen px-7 sm:px-10 py-16 content-center  ">
-                    <BlogPagination edit={false}/>
+                    <BlogPagination user={false}/>
                 </div>
             </div>
             <Quote />

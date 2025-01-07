@@ -1,6 +1,6 @@
 import { EditIcon, Trash2Icon } from "lucide-react";
 
-export default function Skeleton({ edit }: { edit: boolean }) {
+export default function Skeleton({ user }: { user: boolean }) {
 
     const gradients = [
         "from-blue-200 to-purple-300",
@@ -36,7 +36,7 @@ export default function Skeleton({ edit }: { edit: boolean }) {
                                 </ul>
                             </div>
                         </div>
-                        {edit &&
+                        {user &&
                             <div className="flex justify-between mt-4 text-sm">
                                 <button className="mr-2 w-1/2 flex justify-between items-center text-gray-200  border-2  border-gray-200/20  px-4 py-2  rounded-lg font-serif hover:shadow-sm hover:shadow-gray-100">
                                     <span>Edit</span>

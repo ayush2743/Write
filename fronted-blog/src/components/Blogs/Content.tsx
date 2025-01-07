@@ -9,13 +9,12 @@ import formatDate from './Date';
 interface MyContentProps {
     index: number;
     blog: BlogInterface;
-    edit: boolean;
-    onDelete: () => void;
+    user: boolean;
     onClick: () => void;
 }
 
 
-export default function Content({ index, blog, edit, onDelete, onClick }: MyContentProps) {
+export default function Content({ index, blog, user, onClick }: MyContentProps) {
     const gradients = [
         "from-blue-200 to-purple-300",
         "from-green-200 to-teal-300",
@@ -39,7 +38,6 @@ export default function Content({ index, blog, edit, onDelete, onClick }: MyCont
 
 
     async function handleDelete() {
-
         try {
 
             const BACKEND_URL = "https://backend-blog.saxenaayush27-work.workers.dev/api/v1";
@@ -55,15 +53,9 @@ export default function Content({ index, blog, edit, onDelete, onClick }: MyCont
                     id: blog.id
                 }
             });
-            onDelete();
+            window.location.reload();
         } catch (error: any) {
             console.log(error);
-            if (error.message === 'No authentication token found') {
-                throw error;
-            }
-            if (error.response.data.error === 'Error while authorization') {
-                throw error;
-            }
             throw new Error('Failed to delete blog..');
         }
     }
@@ -93,7 +85,7 @@ export default function Content({ index, blog, edit, onDelete, onClick }: MyCont
                     </div>
                 </div>
             </div>
-            {edit &&
+            {user &&
                 <div className="flex justify-between mt-4 text-sm">
                     <button className="mr-2 w-1/2 flex justify-between items-center text-gray-200  border-2  border-gray-200/20  px-4 py-2  rounded-lg font-serif hover:shadow-sm hover:shadow-gray-100" onClick={handleUpdate}>
                         <span>Edit</span>

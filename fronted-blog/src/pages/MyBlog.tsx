@@ -19,7 +19,7 @@ export default function MySelf() {
                     <Headings />
                 </div>
                 <div className="min-h-screen px-10 py-16 content-center  ">
-                    <BlogPagination edit={true}/>
+                    <BlogPagination user={true}/>
                 </div>
             </div>
             <Quote />

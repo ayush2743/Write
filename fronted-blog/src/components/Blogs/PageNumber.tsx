@@ -9,8 +9,8 @@ const Pagination = ({ totalBlogs, setPage, page }: PaginationProps) => {
     const maxVisiblePages = 3; // Maximum number of page buttons to show
 
 
-    const startPage = Math.floor((page - 1) / maxVisiblePages) * maxVisiblePages + 1;
-    const endPage = Math.min(startPage + maxVisiblePages - 1, totalPages);
+    const startPage = page - ((page - 1) % maxVisiblePages);
+    const endPage = Math.min(startPage + maxVisiblePages - 1, totalPages);    
 
     const handlePrevious = () => {
         if (page > 1) setPage(page - 1);
