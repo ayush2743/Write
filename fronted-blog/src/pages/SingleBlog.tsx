@@ -74,7 +74,7 @@ export default function SingleBlog() {
             <div className="z-10">
                 <Navbar home={false} />
                 <div className="mx-auto mb-24 flex flex-col items-left w-[90%] sm:w-2/3 justify-center text-center  ">
-                    <h1 className="text-4xl sm:text-6xl font-bold font-serif text-white mt-32 mb-10">{blog.title}</h1>
+                    <h1 className="drop-shadow-[2px_2px_4px_rgba(179,214,235,0.5)] text-4xl sm:text-6xl font-bold font-serif text-white mt-32 mb-10">{blog.title}</h1>
                     <p className="text-lg sm:text-xl border-b-2 border-gray-200/30 pb-10 mb-24 font-serif text-gray-200">{blog.description}</p>
                     <div
                         className="custom-content mb-14 text-white pl-2 text-left"

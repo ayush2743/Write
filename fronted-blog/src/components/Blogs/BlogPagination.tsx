@@ -72,7 +72,10 @@ export default function BlogPagination({ user }: { user: boolean }) {
                     <PageNumber totalBlogs={totalBlogs.current} setPage={setPage} page={page} />
                 </>
 
-                : <div className="text-white flex justify-center text-4xl font-serif">No blogs found 🥲</div>
+                : <div className="flex flex-col items-center text-center min-h-screen justify-center">
+                    <div className='drop-shadow-[2px_2px_4px_rgba(179,214,235,0.5)] text-white font-bold text-2xl sm:text-4xl font-serif sm:p-5'>No blogs found!</div>
+                    <div className="items-center text-center text-white flex justify-center text-md font-serif"><a href='/create' className="inline p-2 underline text-blue-300">Create</a> your first blog👍</div>
+                </div>
             }
 
         </div>

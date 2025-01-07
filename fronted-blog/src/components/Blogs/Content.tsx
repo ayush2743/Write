@@ -62,21 +62,21 @@ export default function Content({ index, blog, user, onClick }: MyContentProps) 
 
     return (
         <div>
-            <div className={`h-72 bg-gray-900/10 border-2  border-gray-200/20  rounded-lg overflow-hidden transform transition hover:bg-zinc-900 cursor-pointer`}
+            <div className={`bg-gray-900/10 border-2  border-gray-200/20  rounded-lg overflow-hidden transform transition hover:bg-zinc-900 cursor-pointer`}
                 onClick={onClick}
             >
                 <div className={`h-1 w-full bg-gradient-to-r ${gradients[index]}`}></div>
                 <div className="p-7 sm:p-9">
-                    <h3 className="mb-5 text-xl sm:text-2xl font-bold text-white line-clamp-2 font-serif">
+                    <h3 className="mb-5 text-xl sm:text-2xl sm:min-h-[64px] font-bold text-white line-clamp-2 font-serif">
                         {blog.title}
                     </h3>
-                    <div className=''>
-                        <p className="mb-[52px] sm:mb-[62px] text-white line-clamp-2 font-serif">
+                    <div>
+                        <p className="mb-[52px] sm:mb-[62px] sm:min-h-[72px] text-white line-clamp-4 sm:line-clamp-3 font-serif">
                             {blog.description}
                         </p>
                     </div>
                     <div className="flex flex-col sm:flex-row text-end justify-between text-sm text-white font-head">
-                        <span className='pb-2'>{blog.author.name}</span>
+                        <span className='pb-2 sm:pb-0'>{blog.author.name}</span>
                         <span>{blog.publishedAt === blog.updatedAt ? (
                             <p>{formatDate(blog.publishedAt)}</p>
                         ) : (
