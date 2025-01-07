@@ -15,6 +15,40 @@ export const blogRouter = new Hono<{
 }>();
 
 
+// ------------------- Fetch all blogs ------------------- //
+blogRouter.get('/all', async (c) => {
+
+    try {
+        const prisma = new PrismaClient({
+            datasourceUrl: c.env?.DATABASE_URL,
+        }).$extends(withAccelerate());
+
+        const limit = Number(c.req.query("limit")) || 12;
+        const offset = Number(c.req.query("offset")) || 0;
+
+        const totalBlogs = await prisma.post.count();
+
+        const blogs = await prisma.post.findMany({
+            include: {
+                author: {
+                    select: {
+                        name: true
+                    }
+                }
+            },
+            skip: offset,
+            take: limit,
+            orderBy: {
+                updatedAt: 'desc'
+            }
+        });
+
+        return c.json({blogs, totalBlogs});
+    } catch (e) {
+        return c.json({ error: "Error while fetching blogs" }, 500); //Internal Server Error
+    }
+});
+
 
 // ------------------- Fetch Specific blog ------------------- //
 blogRouter.get('/:id', async (c) => {
@@ -96,7 +130,6 @@ blogRouter.post('/post', async (c) => {
         return c.json({ error: "Error while creating blog" }, 500); //Internal Server Error
     }
 });
-
 
 
 // ------------------- Update blog ------------------- //
@@ -191,42 +224,6 @@ blogRouter.get('/post/user-blogs', async (c) => {
             where: {
                 authorId: userId
             },
-            include: {
-                author: {
-                    select: {
-                        name: true
-                    }
-                }
-            },
-            skip: offset,
-            take: limit,
-            orderBy: {
-                updatedAt: 'desc'
-            }
-        });
-
-        return c.json({blogs, totalBlogs});
-    } catch (e) {
-        return c.json({ error: "Error while fetching blogs" }, 500); //Internal Server Error
-    }
-});
-
-
-
-// ------------------- Fetch all blogs ------------------- //
-blogRouter.get('/post/all', async (c) => {
-
-    try {
-        const prisma = new PrismaClient({
-            datasourceUrl: c.env?.DATABASE_URL,
-        }).$extends(withAccelerate());
-
-        const limit = Number(c.req.query("limit")) || 10;
-        const offset = Number(c.req.query("offset")) || 0;
-
-        const totalBlogs = await prisma.post.count();
-
-        const blogs = await prisma.post.findMany({
             include: {
                 author: {
                     select: {
