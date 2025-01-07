@@ -63,8 +63,7 @@ export default function Content({ index, blog, user, onClick }: MyContentProps) 
     return (
         <div>
             <div className={`bg-gray-900/10 border-2  border-gray-200/20  rounded-lg overflow-hidden transform transition hover:bg-zinc-900 cursor-pointer`}
-                onClick={onClick}
-            >
+                onClick={onClick}>
                 <div className={`h-1 w-full bg-gradient-to-r ${gradients[index]}`}></div>
                 <div className="p-7 sm:p-9">
                     <h3 className="mb-5 text-xl sm:text-2xl sm:min-h-[64px] font-bold text-white line-clamp-2 font-serif">
