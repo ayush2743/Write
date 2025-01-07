@@ -71,16 +71,16 @@ export default function Content({ index, blog, user, onClick }: MyContentProps) 
                         {blog.title}
                     </h3>
                     <div className=''>
-                        <p className="mb-20 text-white line-clamp-2 font-serif">
+                        <p className="mb-[52px] sm:mb-[62px] text-white line-clamp-2 font-serif">
                             {blog.description}
                         </p>
                     </div>
-                    <div className="mb-2 absolute bottom-5 left-9 right-9 flex items-center justify-between text-sm text-white font-head">
-                        <span>{blog.author.name}</span>
+                    <div className="flex flex-col sm:flex-row text-end justify-between text-sm text-white font-head">
+                        <span className='pb-2'>{blog.author.name}</span>
                         <span>{blog.publishedAt === blog.updatedAt ? (
                             <p>{formatDate(blog.publishedAt)}</p>
                         ) : (
-                            <p>Updated: {formatDate(blog.updatedAt)}</p>
+                            <p className='inline'>Updated: <p className='inline'>{formatDate(blog.updatedAt)}</p></p>
                         )}</span>
                     </div>
                 </div>

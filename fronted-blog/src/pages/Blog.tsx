@@ -16,13 +16,13 @@ const BlogPage = () => {
             {/* Navbar */}
             <div className="  z-10">
                 <Navbar home={false}/>
-                <div className="mx-auto mb-20 flex flex-col items-left w-4/5 justify-center text-center  ">
+                <div className="mx-auto mb-20 flex flex-col items-left w-4/5 justify-center text-center">
                     <Headings />
                     <div className="m-7 flex justify-center">
                         <SearchElement/>
                     </div>
                 </div>
-                <div className="min-h-screen px-7 sm:px-10 py-16 content-center  ">
+                <div className="min-h-screen px-7 sm:px-10 py-16 content-center">
                     <BlogPagination user={false}/>
                 </div>
             </div>

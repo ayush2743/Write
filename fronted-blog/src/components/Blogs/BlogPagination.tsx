@@ -43,8 +43,8 @@ export default function BlogPagination({ user }: { user: boolean }) {
 
         return (
             <>
-                <div className='text-white flex justify-center text-4xl font-serif'>{blogsLoadable.contents.message}🥲</div>
-                <div className='m-4 text-white flex justify-center text-1xl font-serif'>Please reload the page 🔄️</div>
+                <div className='text-white text-center font-bold text-xl sm:text-4xl font-serif sm:p-5'>{blogsLoadable.contents.message}🥲</div>
+                <div className="items-center text-center text-white flex justify-center text-md font-serif">Please <a href='/signin' className="inline p-2 underline text-blue-300">Login</a> to view your blogs 👍</div>
             </>
         );
     }

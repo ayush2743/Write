@@ -11,11 +11,18 @@ const blogAtomFamily = atomFamily({
 
             return async () => {
                 try {
+
+                    if(!isUser) {
+                        const url = `${BACKEND_URL}/blog/all?limit=4&offset=${(page - 1) * 4}`;
+                        const res = await axios.get(`${url}`);
+                        return res.data;
+                    }
+
                     const token = localStorage.getItem('jwt');
                     if (!token) {
                         throw new Error('No authentication token found');
                     }
-                    const url = isUser ? `${BACKEND_URL}/blog/post/user-blogs?limit=4&offset=${(page - 1) * 4}` : `${BACKEND_URL}/blog/post/all?limit=4&offset=${(page - 1) * 4}`;
+                    const url = `${BACKEND_URL}/blog/post/user-blogs?limit=4&offset=${(page - 1) * 4}`;
                     const res = await axios.get(`${url}`, {
                         headers: {
                             Authorization: `${token}`

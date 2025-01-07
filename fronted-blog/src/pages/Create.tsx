@@ -15,12 +15,18 @@ import BlogEditor from '../components/Create/BlogEditor';
 
 function Create() {
 
+    const token = localStorage.getItem('jwt');
+
     return (
-        <div className="overflow-x-hidden min-h-screen  bg-loginPage  bg-contain bg-no-repeat bg-black  ">
+        <div className="overflow-x-hidden min-h-screen  bg-loginPage  bg-contain bg-no-repeat bg-black">
             <Bubbles />
-            <Navbar home={true} />
+            <Navbar home={false} />
             <div className='flex justify-center'>
-                <Contents />
+                {token ? <Contents token={token} /> :
+                    <div className="flex flex-col items-center min-h-screen text-center justify-center">
+                        <div className='drop-shadow-[2px_2px_4px_rgba(179,214,235,0.5)] text-white font-bold text-xl sm:text-4xl font-serif sm:p-5'>No authentication token found 😪</div>
+                        <div className="items-center text-center text-white flex justify-center text-md font-serif">Please <a href='/signin' className="inline p-2 underline text-blue-300">Login</a> to create a blog 👍  </div>
+                    </div>}
             </div>
             <Quote />
             <Footer />
@@ -28,7 +34,7 @@ function Create() {
 }
 
 
-function Contents() {
+function Contents({ token }: { token: string }) {
 
     const [postBody, setPostBody] = useState<PostBlogBody>({
         title: "",
@@ -44,13 +50,9 @@ function Contents() {
 
         try {
 
-            const token = localStorage.getItem('jwt');
-            if (!token) {
-                throw new Error('No authentication token found');
-            }
             setLoading(true);
 
-            if(postBody.title === '' || postBody.content === '' || postBody.description === '') {
+            if (postBody.title === '' || postBody.content === '' || postBody.description === '') {
                 setError('All fields are required');
                 setTimeout(() => setError(null), 4000);
                 return;
@@ -62,10 +64,15 @@ function Contents() {
                 }
             });
 
-            if(response.data.blog) {
+            if (response.data.blog) {
                 window.location.href = '/blogs';
             }
         } catch (e: any) {
+            if (e.message === 'No authentication token found') {
+                setError('Please login to create a blog');
+                setTimeout(() => setError(null), 4000);
+                return;
+            }
             setError(e.response.data.error);
             setTimeout(() => setError(null), 4000);
         } finally {
@@ -86,7 +93,7 @@ function Contents() {
                 <Heading text="Description" />
                 <Input placeholder="Write you description here.." onChange={(e) => {
                     setPostBody({ ...postBody, description: e.target.value })
-                }} />            
+                }} />
             </div>
             <div>
                 <Heading text="Content" />

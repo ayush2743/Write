@@ -21,10 +21,10 @@ function App() {
                         <Route path="/" element={<Home/>} />
                         <Route path="/signup" element={<Signup />} />
                         <Route path="/signin" element={<Signin />} />
-                        <Route path="/blogs" element={<ProtectedRoute><Blog /></ProtectedRoute>} />
-                        <Route path="/myself" element={<ProtectedRoute><MySelf /></ProtectedRoute> } />
+                        <Route path="/blogs" element={<Blog />} />
+                        <Route path="/myself" element={<MySelf /> } />
                         <Route path='/blog/:id' element={<SingleBlog />} />
-                        <Route path='/create' element={<ProtectedRoute><Create /></ProtectedRoute>} />
+                        <Route path='/create' element={<Create />} />
                         <Route path='/update/:id' element={<ProtectedRoute><Update /></ProtectedRoute>} />
                         <Route path='/error' element={<Erro404 />} />
                         <Route path='*' element={<Navigate to='/error' />} />
